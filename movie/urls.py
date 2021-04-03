@@ -13,6 +13,8 @@ urlpatterns = [
     path('', views.movie_list),
     url(r'^api/movies/$', views.movie_list),
     url(r'^api/movies/(?P<pk>[0-9]+)$', views.getMovie),
+    url(r'^api/events/$', views.timetracker_list)
+
 ]
 
 
