@@ -66,4 +66,91 @@ def timetracker_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def task_list(request):
+    permission_classes = (IsAuthenticatedOrReadOnly)
+    if request.method == 'GET':
+        movies = Tasks.objects.all()
+        serializer = taskSerializer(movies, context={'request': request}, many=True)
+        return Response({'data': serializer.data})
+
+    elif request.method == 'POST':
+        serializer = taskSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def time_list(request):
+    permission_classes = (IsAuthenticatedOrReadOnly)
+    if request.method == 'GET':
+        movies = Time.objects.all()
+        serializer = timeSerializer(movies, context={'request': request}, many=True)
+        return Response({'data': serializer.data})
+
+    elif request.method == 'POST':
+        serializer = timeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def date_list(request):
+    permission_classes = (IsAuthenticatedOrReadOnly)
+    if request.method == 'GET':
+        movies = Date.objects.all()
+        serializer = dateSerializer(movies, context={'request': request}, many=True)
+        return Response({'data': serializer.data})
+
+    elif request.method == 'POST':
+        serializer = dateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def event_list(request):
+    permission_classes = (IsAuthenticatedOrReadOnly)
+    if request.method == 'GET':
+        movies = Events.objects.all()
+        serializer = eventsSerializer(movies, context={'request': request}, many=True)
+        return Response({'data': serializer.data})
+
+    elif request.method == 'POST':
+        serializer = eventsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def user_list(request):
+    permission_classes = (IsAuthenticatedOrReadOnly)
+    if request.method == 'GET':
+        movies = User_Log.objects.all()
+        serializer = userSerializer(movies, context={'request': request}, many=True)
+        return Response({'data': serializer.data})
+
+    elif request.method == 'POST':
+        serializer = userSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 # Create your views here.

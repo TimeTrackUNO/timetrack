@@ -13,7 +13,12 @@ urlpatterns = [
     path('', views.movie_list),
     url(r'^api/movies/$', views.movie_list),
     url(r'^api/movies/(?P<pk>[0-9]+)$', views.getMovie),
-    url(r'^api/events/$', views.timetracker_list)
+    url(r'^api/events/$', views.timetracker_list),
+    url(r'^api/time/$', views.time_list),
+    url(r'^api/users/$', views. user_list),
+    url(r'^api/event/$', views.event_list),
+    url(r'^api/date/$', views.date_list),
+
 
 ]
 

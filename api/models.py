@@ -37,6 +37,30 @@ class TimeTracker(models.Model):
         self.save()
 
 
+class User_Log(models.Model):
+    email=models.CharField(max_length=50, null=False)
+    name=models.CharField(max_length=100)
+    phone=models.IntegerField()
+    Date=models.DateTimeField(default=timezone.now)
+    Time=models.DateTimeField()
+
+class Date(models.Model):
+    Date=models.DateTimeField()
+    week=models.IntegerField()
+    month=models.IntegerField()
+
+class Time (models.Model):
+    hour=models.IntegerField()
+    minutes=models.IntegerField()
+    seconds=models.IntegerField()
+
+class Tasks(models.Model):
+    Task=models.CharField()
+    Date=models.DateTimeField()
+    hours=models.IntegerField()
+    status=models.CharField()
+
+
 class Events(models.Model):
     eventName= models.CharField(max_length=50)
     eventType=models.CharField(max_length=50)
